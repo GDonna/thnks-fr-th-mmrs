@@ -11,7 +11,11 @@ Trips.init(
       primaryKey: true,
       autoIncrement: true,
     },
-    location: {
+    city: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    state: {
       type: DataTypes.STRING,
       allowNull: false,
     },

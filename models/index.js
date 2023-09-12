@@ -1,11 +1,11 @@
 const User = require('./User');
 const Trips = require('./Trips');
 
-Trips.hasMany(location, {
+Users.hasMany(Trips, {
   foreignKey: 'trips_id',
 });
 
-location.belongsTo(User, {
+Trips.belongsTo(User, {
   foreignKey: 'trips_id',
 });
 
