@@ -4,15 +4,15 @@ const { User, Trips } = require('../models');
 // GET all Trip Data for homepage
 router.get('/', async (req, res) => {
   try {
-    const dbTripsData = await Trips.findAll(
-      // {
-      // include: [
-      //   {
-      //     model: Trips,
-      //     attributes: ['city', 'state', 'Best_Memories', 'Worst_Memories', 'Best_Restaurants'],
-      //   },
-      // ],
-    // }
+    const dbTripsData = await User.findAll(
+      {
+      include: [
+        {
+          model: Trips,
+          attributes: ['city', 'state', 'Best_Memories', 'Worst_Memories', 'Best_Restaurants'],
+        },
+      ],
+    }
     );
 
     const trips = dbTripsData.map((xyz) =>
