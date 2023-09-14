@@ -1,7 +1,7 @@
 const User = require('./User');
 const Trips = require('./Trips');
 
-Users.hasMany(Trips, {
+User.hasMany(Trips, {
   foreignKey: 'trips_id',
 });
 
