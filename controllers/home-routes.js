@@ -1,8 +1,9 @@
 const router = require('express').Router();
 const { User, Trips } = require('../models');
+const withAuth = require('../utils/Auth');
 
 // GET all Trip Data for homepage
-router.get('/', async (req, res) => {
+router.get('/', withAuth, async (req, res) => {
   try {
     const dbTripsData = await User.findAll(
       {
