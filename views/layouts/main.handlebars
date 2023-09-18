@@ -22,6 +22,65 @@
     {{/if}}
   </nav>
   <main>
+
+    <section>
+      <li>
+        <div id="map"></div>
+      </li>
+    </ul>
+    
+    <main class="flex-row justify-space-between">
+      <div class="col-12 col-md-4">
+        <button id="backButton">
+          <a class="backBtn" href="./index.html">Back</a>
+        </button>
+        
+        <div class="card">
+          <h3 class="card-header text-uppercase">Search By Zip Code:</h3>
+          <!--The map wasn't loading properly so I removed the <form> tag if that's alright-->
+            <input id="zipcodeInput" type="text" autofocus="true" placeholder="Enter City Name" class="input-zip" />
+            <button id="searchButton" type="submit" class="btn">Search</button>
+          </div>
+          <div class="col-12 col-md-8" id="searchResults">
+            <h2 class="subtitle">Results: </h2>
+            <div id="skateparkList" class="list-group"></div>
+            <div id="description"></div>
+            <h3 id="temp"></h3>
+            <div id="location"></div>
+          </div>
+      <script>
+        function initMap() {
+          var map = new google.maps.Map(document.getElementById('map'), {
+            center: { lat: 41.966777553651454, lng: -87.64582153961592 },
+            zoom: 11
+          });
+
+          var markers = [];
+          var maxMarkers = 20;
+  
+          document.getElementById('searchButton').addEventListener('click', function () {
+            var zipCode = document.getElementById('zipcodeInput').value;
+            if (zipCode) {
+              var geocoder = new google.maps.Geocoder();
+              geocoder.geocode({ 'address': zipCode }, function (results, status) {
+                if (status === 'OK') {
+                  var location = results[0].geometry.location;
+                  var service = new google.maps.places.PlacesService(map);
+                  map.setCenter(location);
+                } else {
+                }
+              });
+            } else {
+            }
+          });
+        }
+      </script>
+       <script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCbHIyT2Mt-FO1D2JDGE4NAAHUXlDfFIYo&callback=initMap&libraries=places&v=weekly"
+      defer
+    ></script>  
+    </section>
+
     <aside>
       <h2>Enjoy the galleries!</h2>
     </aside>
