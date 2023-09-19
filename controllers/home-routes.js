@@ -3,7 +3,7 @@ const { User, Trips } = require('../models');
 const withAuth = require('../utils/Auth');
 
 // GET all Trip Data for homepage
-router.get('/', withAuth, async (req, res) => {
+router.get('/', async (req, res) => {
   try {
     const dbTripsData = await User.findAll(
       {
