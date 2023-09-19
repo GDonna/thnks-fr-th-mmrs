@@ -9,60 +9,40 @@
   <link rel="stylesheet" type="text/css" href="/css/style.css">
 </head>
 
+<header>
+  <h1>Thnks Fr Th Mmrs</h1>
+  <h2>Welcome to your online trip Diary</h2>
+</header>
+
 <body>
-  <header>
-    <h1>Welcome To Your Trip Diary</h1>
-  </header>
-  <nav>
-    <a href="/">Home</a>
-    {{#if loggedIn}}
-    <button id="logout" class="btn-no-style">Logout</button>
-    {{else}}
-    <a href="/login">Login</a>
-    {{/if}}
-  </nav>
-  <main>
+  <div class="flex-column justify-space-around">
+    <header class="display-flex justify-space-between align-center p-2">
+      <nav>
+        <!-- Conditionally render login or logout links -->
+        {{#if logged_in}}
+        <a href="/homepage"> Homepage </a> |
+        <button class="no-button" id="logout"> Logout </button>
+        {{else}}
+        <a href="/login"> Login Here </a>
+        {{/if}}
+      </nav>
+    </header>
+    <main class="container container-fluid mt-5">
+      {{{ body }}}
+  </div>
+</body>
 
-    <section>
-      <li>
-        <div id="map"></div>
-      </li>
-    </ul>
-    
-    <main class="flex-row justify-space-between">
-      <div class="col-12 col-md-4">
-       
-        
-        <div class="card">
-          <h3 class="card-header text-uppercase">Search By Zip Code:</h3>
-         
-            <input id="zipcodeInput" type="text" autofocus="true" placeholder="Enter City Name" class="input-zip" />
-            <button id="searchButton" type="submit" class="btn">Search</button>
-          </div>
-          <div class="col-12 col-md-8" id="searchResults">
-            <h2 class="subtitle">Results: </h2>
-            <div id="skateparkList" class="list-group"></div>
-            <div id="description"></div>
-            <h3 id="temp"></h3>
-            <div id="location"></div>
-          </div>
-    
-       <script
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCbHIyT2Mt-FO1D2JDGE4NAAHUXlDfFIYo&callback=initMap&libraries=places&v=weekly"
-      defer
-    ></script>  
-    </section>
-
-    <aside>
-      <h2>Enjoy the galleries!</h2>
-    </aside>
-    <div class="gallery">
-      {{{body}}}
-    </div>
-  </main>
+<nav>
+  <a href="/">Home</a>
   {{#if loggedIn}}
-  <script src="/js/logout.js"></script>
+  <button id="logout" class="btn-no-style">Logout</button>
+  {{else}}
+  <a href="/login">Login</a>
   {{/if}}
+</nav>
+{{#if loggedIn}}
+<script src="/js/logout.js"></script>
+{{/if}}
 </body>
 
 </html>
