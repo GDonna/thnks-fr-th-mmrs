@@ -13,7 +13,8 @@ router.post('/', async (req, res) => {
 
     req.session.save(() => {
       req.session.loggedIn = true;
-
+     // res.redirect('/homepage');
+      
       res.status(200).json(dbUserData);
     });
   } catch (err) {
@@ -28,6 +29,7 @@ router.post('/login', async (req, res) => {
     const dbUserData = await User.findOne({
       where: {
         email: req.body.email,
+        password: req.body.password
       },
     });
 
