@@ -4,23 +4,23 @@ const TripsData = [
   {
     city: 'St Louis',
     state: 'MO',
-    best_memories: 'I went up the arch.',
-    worst_memories: 'I am afraid of heights.',
-    best_restaurant: "Pappy's Smokehouse BBQ",
+    Best_Memories: 'I went up the arch.',
+    Worst_Memories: 'I am afraid of heights.',
+    Best_Restaurant: "Pappy's Smokehouse BBQ",
   },
   {
     city: 'Chicago',
     state: 'IL',
-    best_memories: 'I went to all the museums and went shopping down Michigan Ave.',
-    worst_memories: 'I spend a lot of money',
-    best_restaurant: 'Ricobenes',
+    Best_Memories: 'I went to all the museums and went shopping down Michigan Ave.',
+    Worst_Memories: 'I spend a lot of money',
+    Best_Restaurant: 'Ricobenes',
   },
   {
     city: 'Las Vegas',
     state: 'NV',
-    best_memories: 'I went down the strip and went around every casino',
-    worst_memories: 'I lost money at the slots',
-    best_restaurant: 'Bacchanal Buffet',
+    Best_Memories: 'I went down the strip and went around every casino',
+    Worst_Memories: 'I lost money at the slots',
+    Best_Restaurant: 'Bacchanal Buffet',
   },
 ];
 

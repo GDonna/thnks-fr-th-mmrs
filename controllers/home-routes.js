@@ -16,11 +16,9 @@ router.get('/', async (req, res) => {
     }
     );
 
-    const trips = dbTripsData.map((xyz) =>
-      xyz.get({ plain: true })
-    );
+    const trips = dbTripsData.map((xyz) => xyz.get({ plain: true }));
     res.render('homepage', {
-      trips,
+      ...trips,
       loggedIn: req.session.loggedIn,
     });
   } catch (err) {
