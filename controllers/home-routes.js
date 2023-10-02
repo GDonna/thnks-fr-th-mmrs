@@ -5,12 +5,12 @@ const withAuth = require('../utils/Auth');
 // GET all Trip Data for homepage
 router.get('/', async (req, res) => {
   try {
-    const dbTripsData = await User.findAll(
+    const dbTripsData = await Trips.findAll(
       {
       include: [
         {
-          model: Trips,
-          attributes: ['city', 'state', 'Best_Memories', 'Worst_Memories', 'Best_Restaurants'],
+          model: User,
+          attributes: ['firstname'],
         },
       ],
     }
@@ -18,7 +18,7 @@ router.get('/', async (req, res) => {
 
     const trips = dbTripsData.map((xyz) => xyz.get({ plain: true }));
     res.render('homepage', {
-      ...trips,
+      trips,
       loggedIn: req.session.loggedIn,
     });
   } catch (err) {
