@@ -1,3 +1,8 @@
-DROP DATABASE IF EXISTS memories_db;
+DROP DATABASE IF EXISTS user_db;
 
-CREATE DATABASE memories_db;
+CREATE DATABASE user_db;
+
+USE user_db;
+
+
+

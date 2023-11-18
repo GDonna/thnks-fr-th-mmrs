@@ -1,5 +1,5 @@
 const  router = require('express').Router();
-const User = require('../../models/User');
+const { User } = require('../../models');
 
 // CREATE new user
 router.post('/', async (req, res) => {
@@ -50,20 +50,14 @@ router.post('/login', async (req, res) => {
     }
 
     req.session.save(() => {
-      req.session.loggedIn = true;
-      console.log(
-        'File: user-routes.js ~ line 57 ~ req.session.save ~ req.session.cookie',
-        req.session.cookie,
-        req.session.loggedIn
-      );
-
-      res
-        .status(200)
-        .json({ user: dbUserData, message: 'You are now logged in!' });
+      req.session.user_id = dbUserData.id;
+      req.session.logged_in = true;
+      
+      res.json({ user: dbUserData, message: 'You are now logged in!' });
     });
+
   } catch (err) {
-    console.log(err);
-    res.status(500).json(err);
+    res.status(400).json(err);
   }
 });
 

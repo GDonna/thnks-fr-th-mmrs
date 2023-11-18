@@ -2,39 +2,34 @@ const router = require('express').Router();
 const { User, Trips } = require('../models');
 const withAuth = require('../utils/Auth');
 
-// GET all Trip Data for homepage
-router.get('/', async (req, res) => {
-  try {
-    const dbTripsData = await Trips.findAll(
-      {
-      include: [
-        {
-          model: User,
-          attributes: ['firstname'],
-        },
-      ],
-    }
-    );
 
-    const trips = dbTripsData.map((xyz) => xyz.get({ plain: true }));
-    res.render('homepage', {
-      trips,
-      loggedIn: req.session.loggedIn,
+//Use withAuth middleware to prevent access to route
+router.get('/login', withAuth, async (req, res) => {
+  try {
+    const dbUserData = await User.findByPk(req.session.user_id, {
+      attributes: { exclude: ['password'] },
+      include: [{ model: Trips }],
+    });
+    const user = dbUserData.get({ plain: true });
+    res.render('profile', {
+      ...user,
+      loggedIn: true,
     });
   } catch (err) {
-    console.log(err);
+    console.log('You need to be logged in to see!', err);
     res.status(500).json(err);
+    
   }
 });
 
-
-// Login route
-router.get('/login', (req, res) => {
-  if (req.session.loggedIn) {
-    res.redirect('/');
-    return;
-  }
-  res.render('login');
-});
-
-module.exports = router;
+// If the user is already logged in, redirect the request to another route
+  router.get('/', (req, res) => {
+    if (req.session.loggedIn) {
+      res.redirect('/profile');
+      return;
+    }
+    res.render('login');
+  });
+  
+  
+  module.exports = router;
