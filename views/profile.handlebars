@@ -10,8 +10,7 @@
 </head>
 
 <header>
-  <h1>Thnks Fr Th Mmrs</h1>
-  <h2>Online Trip Diary</h2>
+  <h1>WELCOME TO PROFILE</h1>
 </header>
 
 <body>
@@ -20,8 +19,7 @@
       <nav>
         <!-- Conditionally render login or logout links -->
         {{#if loggedIn}}
-        <a href="/profile"> WELCOME TO PROFILE </a> |
-        <button class="no-button" id="logout"> Logout </button>
+        <button class="no-button logout-btn"> Logout </button>
         {{/if}}
       </nav>
     </header>
@@ -31,9 +29,7 @@
   
   </div>
 
-  {{#if logged_in}}
-  <script src="/public/js/logout.js"></script>
-  {{/if}}
+  <script src="/js/logout.js"></script>
 </body>
 
 </html>
