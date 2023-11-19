@@ -10,16 +10,32 @@
 </head>
 
 <header>
-  <h1>WELCOME TO PROFILE</h1>
+  <div class="flex justify-center">
+  <h1>Profile Page</h1>
+
+  </div>
 </header>
 
 <body>
-  <div class="flex-column justify-space-around">
-    <header class="display-flex justify-space-between align-center p-2">
+  <div>
+    <header class="profile-header">
       <nav>
-        <!-- Conditionally render login or logout links -->
         {{#if loggedIn}}
-        <button class="no-button logout-btn"> Logout </button>
+        <nav class="nav">
+          <a href="/profile">Profile</a>
+          <a href="/trips">Trips</a>
+          <a href="/trips/new">New Trip</a>
+          <button class="no-button logout-btn"> Logout </button>
+        </nav>
+        <div class = "profile">
+          <h2> Welcome to your homepage!</h2>
+
+          <div class="image">
+            <p>Under Construction</p>
+          <img src="/assets/nik-umFPf301OjQ-unsplash.jpg" alt="under construction picture">
+          </div>
+        </div>
+        
         {{/if}}
       </nav>
     </header>

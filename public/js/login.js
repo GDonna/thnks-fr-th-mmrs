@@ -38,6 +38,7 @@ const signupFormHandler = async (event) => {
     });
 
     if (response.ok) {
+      alert('Account created! Please log in.');
       document.location.replace('/profile');
     } else {
       alert('Failed to sign up.');

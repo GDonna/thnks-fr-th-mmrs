@@ -10,17 +10,15 @@
 </head>
 
 <header>
-  <h1>Thnks Fr Th Mmrs</h1>
-  <h2>Online Trip Diary</h2>
+  <h1>Welcome to your Online Trip Dairy</h1>
+  <h2>Capture your memories in one place!</h2>
 </header>
 
 <body>
   <div class="flex-column justify-space-around">
     <header class="display-flex justify-space-between align-center p-2">
       <nav>
-        <!-- Conditionally render login or logout links -->
         {{#if loggedIn}}
-        <a href="/profile"> Homepage </a> |
         <button class="no-button" id="logout"> Logout </button>
         {{/if}}
       </nav>
@@ -28,7 +26,7 @@
     <main class="container container-fluid mt-5">
       {{{ body }}}
     </main>
-  
+
   </div>
 
   {{#if logged_in}}
