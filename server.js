@@ -8,7 +8,7 @@ const withAuth = require('./utils/Auth');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
 const sequelize = require('./config/connection');
 
-
+console.log("server.js");
 
 const app = express();
 const PORT = process.env.PORT || 3001;
